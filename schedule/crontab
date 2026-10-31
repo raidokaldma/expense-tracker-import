@@ -1,0 +1,2 @@
+# Tallinn time (TZ in compose.example.yaml). Banks allow about 4 unattended fetches per account per day.
+0 9,13,19,23 * * * /schedule/fetch.sh > /proc/1/fd/1 2>&1

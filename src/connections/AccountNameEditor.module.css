@@ -1,0 +1,31 @@
+.nameButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: -3px -6px;
+  padding: 3px 6px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.nameButton svg {
+  color: var(--faint);
+}
+
+.nameButton:hover {
+  background: var(--hover);
+}
+
+.nameButton:hover svg {
+  color: var(--ink-3);
+}
+
+.nameInput {
+  height: 26px;
+  margin: -4px 0;
+}

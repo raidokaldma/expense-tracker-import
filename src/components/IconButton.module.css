@@ -1,0 +1,25 @@
+.button {
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ink-3);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #e3e6eb;
+  color: var(--ink);
+}
+
+.button.danger:hover {
+  background: #fdecea;
+  color: var(--neg-ink);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--accent);
+}

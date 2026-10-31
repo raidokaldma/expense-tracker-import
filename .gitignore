@@ -1,0 +1,14 @@
+node_modules
+dist
+.idea
+.DS_Store
+*.log
+
+# server data and secrets
+data/
+secrets/
+.env
+*.pem
+
+# copied from compose.example.yaml, changed per host
+compose.yaml

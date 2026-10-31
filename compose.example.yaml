@@ -1,0 +1,29 @@
+services:
+  app:
+    build: .
+    env_file: .env
+    ports:
+      - "3000:3000"
+    volumes:
+      # the database
+      - ./data:/data
+      # the Enable Banking key and the TLS certificate
+      - ./secrets:/secrets:ro
+    extra_hosts:
+      # expense-tracker on the same host: EXPENSE_TRACKER_URL=http://host.docker.internal:8080/
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+  # unattended fetches at the times in schedule/crontab
+  schedule:
+    image: alpine:3.22
+    environment:
+      # Europe/Tallinn as a POSIX rule, daylight saving time included: Alpine has no time zone database
+      TZ: EET-2EEST,M3.5.0/3,M10.5.0/4
+    volumes:
+      - ./schedule:/schedule:ro
+    # crond only reads a crontab owned by root: a copy, not the mounted file
+    command: ["sh", "-c", "cp /schedule/crontab /etc/crontabs/root && exec crond -f"]
+    depends_on:
+      - app
+    restart: unless-stopped
